@@ -13,7 +13,7 @@
 <body>
     <div class="jumbotron">
         <div class="container">
-            <h1>Danh mục</h1>
+            <h1>Danh mục 1</h1>
 
             <table class="table table-hover">
                 <thead>
