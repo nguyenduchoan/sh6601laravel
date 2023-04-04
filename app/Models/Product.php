@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Product extends Model
 {
     use HasFactory;
-
-    //Khai báo các trường dữ liệu
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'price', 'sale_price', 'image', 'content', 'category_id', 'status'];
 }
