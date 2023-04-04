@@ -106,3 +106,5 @@ Route::post('upload',[UploadController::class, 'upload'])->name('upload.upload')
 
 Route::get('product', [ProductController::class, 'index'])->name('product.index');
 
+Route::get('product-join', [ProductController::class, 'indexJoin'])->name('product.index');
+

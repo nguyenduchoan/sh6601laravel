@@ -11,4 +11,10 @@ class Category extends Model
 
     //Khai báo các trường dữ liệu
     protected $fillable = ['name', 'status'];
+
+    // phương thức join tới bảng product lấy ra mảng Product
+    public function products(){
+        return $this->hasMany(Product::class, 'category_id', 'id');
+    }
+
 }

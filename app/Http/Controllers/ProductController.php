@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,5 +44,12 @@ class ProductController extends Controller
         $totlPage = ceil($totalRow / $limit);
         // trả dữ liệu về cho views/product.blade.php
         return view('product', compact('products', 'totalRow', 'totalPrice', 'maxPrice', 'minPrice', 'totlPage'));
+    }
+
+    public function indexJoin(Request $req)
+    {
+        $products = Product::paginate(2);
+        dd($products);
+        return view('product.product-join', compact('products'));
     }
 }
