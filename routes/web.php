@@ -104,7 +104,12 @@ Route::get('upload',[UploadController::class, 'form'])->name('upload.form');
 Route::post('upload',[UploadController::class, 'upload'])->name('upload.upload');
 
 
-Route::get('product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
-Route::get('product-join', [ProductController::class, 'indexJoin'])->name('product.index');
+Route::get('product-join', [ProductController::class, 'indexJoin'])->name('product.join');
+
+// GET categorry/create để hiển thị form nhập dữ liệu
+Route::get('/product/create', [ProductController::class, 'create'])->name('category.create');
+// POST categorry để nhận dữ liệu khi submit form
+Route::post('/product', [ProductController::class, 'store'])->name('product.createToDB');
 

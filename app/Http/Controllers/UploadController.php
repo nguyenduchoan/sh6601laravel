@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 class UploadController extends Controller
 {
     /**Hienr thị form chọn ản */
-    public function form() {
+    public function form()
+    {
         return view('upload.form');
     }
 
     /** Nhận dữ liệu và thực hiện upload */
-    public function upload(Request $request) {
-        $rules = ['upload' => 'required|mimes:jpeg,png,gif'];
+    public function upload(Request $request)
+    {
+        $rules = ['upload' => 'required|mimes:jpg,jpeg,png,gif'];
         $mesages = [
             'upload.required' => 'Vui lòng chọn một file',
             'upload.mimes' => 'Định dạng file cho phép là: jpg, png, gif',
@@ -24,7 +26,6 @@ class UploadController extends Controller
         $file_name = $request->upload->getClientOriginalName();
         $request->upload->move(public_path('uploads'), $file_name);
         // quay lại form upload và gửi kèm một flash message
-        return redirect()->back()->with('success',"Upload ảnh thành công");
+        return redirect()->back()->with('success', "Upload ảnh thành công");
     }
-
 }

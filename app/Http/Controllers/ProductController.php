@@ -52,4 +52,32 @@ class ProductController extends Controller
         dd($products);
         return view('product.product-join', compact('products'));
     }
+
+    public function create()
+    {
+        return view('product.create');
+    }
+
+    /**
+     * Phương thức store để nhận và lưu dữ liệu vào bảng
+     */
+    public function store(Request $request)
+    {
+        $rules = ['upload' => 'required|mimes:jpg,jpeg,png,gif'];
+        $mesages = [
+            'upload.required' => 'Vui lòng chọn một file',
+            'upload.mimes' => 'Định dạng file cho phép là: jpg, png, gif',
+        ];
+
+        $request->validate($rules, $mesages);
+
+        $file_name = $request->upload->getClientOriginalName();
+        $request->upload->move(public_path('uploads'), $file_name);
+        $path = "/uploads/" . $file_name;
+        $data = $request->only('name', 'price', 'sale_price', 'content', 'category_id', 'status');
+        $data["image"] = $path;
+        // dd($data);
+        DB::table('products')->insert($data);
+        return redirect()->route('product.index'); // chuyển hướng về danh sách
+    }
 }

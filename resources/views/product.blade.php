@@ -62,7 +62,7 @@
                     <th>Tên sản phẩm</th>
                     <th>Giá/ giá KM</th>
                     <th>Trạng thái</th>
-                    <th>Ngày tạo</th>
+                    <th>Image</th>
                     <th></th>
                 </tr>
             </thead>
@@ -73,7 +73,7 @@
                         <td>{{ $pro->name }}</td>
                         <td>{{ $pro->price }}/ {{ $pro->sale_price }}</td>
                         <td>{{ $pro->status }}</td>
-                        <td>{{ $pro->created_at }}</td>
+                        <td><img src="{{ url('/') . $pro->image }}"></td>
                         <td>
 
                             <a href="" class="btn btn-danger btn-sm">Xóa</a>
