@@ -106,5 +106,9 @@ Route::post('upload',[UploadController::class, 'upload'])->name('upload.upload')
 
 Route::get('product', [ProductController::class, 'index'])->name('product.index');
 
-Route::get('product-join', [ProductController::class, 'indexJoin'])->name('product.index');
+Route::get('product-join1', [ProductController::class, 'indexJoin'])->name('product.index');
+
+Route::get('test-git', function() {
+    return "Test Gift";
+});
 
