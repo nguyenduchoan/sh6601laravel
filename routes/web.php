@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,12 +101,30 @@ Route::get('categorry/{id}/edit', [CategoryController::class, 'edit'])->name('ca
 Route::put('categorry/{id}', [CategoryController::class, 'update'])->name('category.update');
 
 // GET upload
-Route::get('upload',[UploadController::class, 'form'])->name('upload.form');
+Route::get('upload', [UploadController::class, 'form'])->name('upload.form');
 // POST upload
-Route::post('upload',[UploadController::class, 'upload'])->name('upload.upload');
+Route::post('upload', [UploadController::class, 'upload'])->name('upload.upload');
 
 
 Route::get('product', [ProductController::class, 'index'])->name('product.index');
 
 Route::get('product-join', [ProductController::class, 'indexJoin'])->name('product.index');
 
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'customer', 'middleware' => 'cus'], function () {
+    Route::get("/", function () {
+        return view("home");
+    })->middleware('cus')->name("customer.home");
+    // Phương thức get hiển thị form login
+    Route::get('login', [CustomerController::class, 'login'])->name('customer.login');
+    //Phương thức post để thực hiện login khi submit form
+    Route::post('login', [CustomerController::class, 'post_login']);
+    // Phương thức get hiển thị form register
+    Route::get('register', [CustomerController::class, 'register'])->name('customer.register');
+    //Phương thức post để thực hiện register khi submit form
+    Route::post('register', [CustomerController::class, 'post_register']);
+});
