@@ -13,7 +13,7 @@ class CustomerController extends Controller
     {
         if (Auth::guard('cus')->check()) {
             // chuyển hướng về form đăng nhập
-            return redirect()->route('customer.home');
+            return redirect()->back()->with("success", "Login thành công");
         }
         // gọi view hiện hị form đăng nhập
         return view('customer.login');
@@ -30,7 +30,7 @@ class CustomerController extends Controller
         if (!$check_login) {
             return redirect()->back()->with('error', 'Đăng nhập không thành công vui lòng thử lại');
         }
-        return redirect()->route('customer.home');
+        return redirect()->route('home.index');
     }
 
 

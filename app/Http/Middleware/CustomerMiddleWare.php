@@ -20,7 +20,7 @@ class CustomerMiddleWare
         $url = $request->url();
         if (!str_contains($url, 'login') && !Auth::guard('cus')->check()) {
             // chuyển hướng về form đăng nhập
-            return redirect()->route('customer.login');
+            return redirect()->route('login');
         }
 
         return $next($request);

@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Customer Login') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('customer.login') }}">
+                        <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="email"

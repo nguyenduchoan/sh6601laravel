@@ -11,7 +11,13 @@ class Product extends Model
     protected $fillable = ['name', 'price', 'sale_price', 'image', 'content', 'category_id', 'status'];
 
     // phương thức join tới bảng category
-    public function cat() {
+    public function cat()
+    {
         return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'product_id', 'id');
     }
 }
