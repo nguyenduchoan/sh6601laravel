@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     function index() {
-        dd("check o day");
+        dd("check o day lan 2");
         $categories = Category::paginate();
         return view('index', compact('categories'));
     }
