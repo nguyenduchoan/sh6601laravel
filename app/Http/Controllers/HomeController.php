@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     function index() {
         dd("check o day lan 2");
+        dd("check o day lan 3");
         $categories = Category::paginate();
         return view('index', compact('categories'));
     }
