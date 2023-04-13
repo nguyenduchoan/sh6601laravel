@@ -19,8 +19,6 @@ class HomeController extends Controller
         return view('product-detail', compact('product'));
     }
 
-
-
     public function login()
     {
         // Hiển thị form login

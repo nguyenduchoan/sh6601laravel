@@ -1,5 +1,7 @@
 @extends('master.home')
+
 @section('main')
+
 <h2>Sản phẩm mới nhất</h2>
 <div class="row products">
     @foreach($products as $pro)
@@ -15,11 +17,12 @@
                 </p>
                 <p>
                     <a href="{{ route('home.product_detail', $pro->id) }}" class="btn btn-primary">View</a>
-                    <a href="#" class="btn btn-default">Add To Cart</a>
+                    <a href="{{ route('cart.add', $pro->id) }}" class="btn btn-default">Add To Cart</a>
                 </p>
             </div>
         </div>
     </div>
     @endforeach
 </div>
+
 @stop()
