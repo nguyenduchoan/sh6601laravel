@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile')->middleware('auth');
 Route::group(['prefix' => 'customer'], function () {
@@ -32,4 +34,25 @@ Route::group(['prefix' => 'customer'], function () {
     Route::get('register', [CustomerController::class, 'register'])->name('customer.register');
     //Phương thức post để thực hiện register khi submit form
     Route::post('register', [CustomerController::class, 'post_register']);
+});
+
+
+Route::group(['prefix' => 'home'], function () {
+    // HIển thị trang màn hình chính 
+    Route::get('categories', [HomeCateController::class, 'index'])->name('home.index');
+    // hiển thị trang sản phẩm chi tiết
+    // Route::get()
+
+});
+
+Route::group(['prefix' => 'Admin'], function () {
+    // Hiển thị trang Admin
+    Route::get('categories', [AdminController::class, 'index'])->name('category.index');
+    // thêm dữu liệu sản phẩm vào dâtbase
+    Route::get('categories/create', [AdminController::class, 'create_category'])->name('Admin.create');
+
+
+    // Nhận phương thức post để thêm vào đb
+    Route::post('categories', [CategoryController::class, 'store'])->name('Admin.store');
+    Route::delete('categorry/{id}', [CategoryController::class, 'delete'])->where(["id" => "[0-9]+"])->name('category.delete');
 });
