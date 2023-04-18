@@ -1,0 +1,98 @@
+body {
+    width: 1905px;
+    height: 100vh;
+}
+* {
+    box-sizing: border-box;
+}
+
+.nav {
+    height: 80px;
+    background-color: rgb(47, 47, 47);
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+}
+ul li {
+    line-height: 80px;
+    opacity: 1;
+}
+
+ul li a:hover {
+    background-color: #474747;
+}
+ul li a:active {
+    background-color: #828181;
+}
+
+.content {
+    margin: 20px 20px 0px 20px;
+}
+
+.list_product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.item {
+    width: 25%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+.item_product_img {
+    width: 100%;
+    object-fit: cover;
+    padding: 10px;
+}
+p.title {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p.price {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.button {
+    margin: 30px 0 50px 20px;
+}
+
+.View__btn,
+.Add__btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #7e7d7d;
+    color: #000;
+}
+.View__btn:hover,
+.Add__btn:hover {
+    background-color: rgb(85, 85, 199);
+    color: #fff;
+}
+
+.View__btn:active,
+.Add__btn:active {
+    opacity: 0.9;
+}
+a.active {
+    background-color: #b4b2b2;
+}

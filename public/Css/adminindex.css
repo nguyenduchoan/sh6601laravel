@@ -1,0 +1,85 @@
+/* Styles for the product admin page */
+.main {
+    display: flex;
+    flex-shrink: 1;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+    width: 80%;
+    max-width: 500px;
+}
+
+input[type="submit"],
+button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table-1 {
+    margin-top: 20px;
+    width: 25%;
+}
+
+caption {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+button {
+    background-color: #f44336;
+}
+
+.btn-add-product {
+    position: absolute;
+    top: 20px;
+    font-size: 13px;
+    background: #0d430da1;
+}
+
+.btn-add-cate {
+    position: absolute;
+    top: 20px;
+    font-size: 13px;
+    right: 125px;
+    background: #0d430da1;
+}

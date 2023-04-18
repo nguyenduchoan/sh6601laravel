@@ -1,0 +1,42 @@
+/* Styles for the product detail page */
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    flex-direction: row;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.product-image {
+    width: 40%;
+    margin-right: 50px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.product-info {
+    width: 50%;
+}
+
+.product-name {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}

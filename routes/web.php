@@ -47,12 +47,12 @@ Route::group(['prefix' => 'home'], function () {
 
 Route::group(['prefix' => 'Admin'], function () {
     // Hiển thị trang Admin
-    Route::get('categories', [AdminController::class, 'index'])->name('category.index');
+    Route::get('categories', [AdminController::class, 'index'])->name('Admin.index');
     // thêm dữu liệu sản phẩm vào dâtbase
     Route::get('categories/create', [AdminController::class, 'create_category'])->name('Admin.create');
 
 
     // Nhận phương thức post để thêm vào đb
     Route::post('categories', [CategoryController::class, 'store'])->name('Admin.store');
-    Route::delete('categorry/{id}', [CategoryController::class, 'delete'])->where(["id" => "[0-9]+"])->name('category.delete');
+    Route::delete('categorry/{id}', [CategoryController::class, 'delete'])->where(["id" => "[0-9]+"])->ndame('Admin.delete');
 });
