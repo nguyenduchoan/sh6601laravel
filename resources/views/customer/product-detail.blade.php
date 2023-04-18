@@ -10,17 +10,21 @@
 <body>
     <div class="product-container">
         <div class="product-image">
-            <img src="https://via.placeholder.com/400x400" alt="Product Image">
+            <img src="{{$product->image}}" alt="Product Image">
         </div>
         <div class="product-info">
-            <h1 class="product-name">Product Name</h1>
-            <p class="product-price">$99.99</p>
+            <h1 class="product-name">{{$product->name}}</h1>
+            <p class="product-price">Giá mới : ${{$product->price}}</p>
+            <p class="product-price">Giá cũ : ${{$product->sale_price}}</p>
             <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod est eu
                 ex fringilla sagittis. Sed nec hendrerit magna, a bibendum nisi. Sed sed justo at sapien mollis rutrum.
                 Fusce in metus lobortis, euismod lacus quis, auctor tellus. Praesent euismod metus quam, nec eleifend mi
                 consectetur nec.</p>
+                <input type="number" name="" id="">
+                <button></button>
         </div>
     </div>
+    
 </body>
 
 </html>

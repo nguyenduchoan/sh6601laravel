@@ -17,6 +17,8 @@ class CustomerController extends Controller
     {
         // code thực hiện đăng nhập
         //$login_data = $request->only('email','password');
+
+
         $login_data = [
             'email' => $request->email,
             'password' => $request->password
@@ -25,7 +27,7 @@ class CustomerController extends Controller
         if (!$check_login) {
             return redirect()->back()->with('error', 'Đăng nhập không thành công vui lòng thử lại');
         }
-        return redirect()->route('index');
+        return redirect()->route('home.index')/*back()*/;
     }
     public function register()
     {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Categories;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -13,10 +15,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -26,8 +28,15 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::orderBy('id', 'desc')->limit(4)->get();
-        return view('index', compact('products'));
+        $cates = DB::table('Categories')->select('*')->get();
+        // dd($cates);
+        return view('index', compact('products', 'cates'));
     }
+    public function product(Product $product)
+    {
+        return view('customer.product-detail', compact('product'));
+    }
+
     public function login()
     {
         // Hiển thị form login

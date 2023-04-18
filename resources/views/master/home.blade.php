@@ -13,13 +13,41 @@
 <body>
     <nav class="navbar navbar-inverse">
         <div class="container">
+            
+                
+            
             <a class="navbar-brand" href="#">My Shopping</a>
-            <ul class="nav navbar-nav">
+            {{-- <ul class="nav navbar-nav"> --}}
+            {{-- @foreach ($cates as $cate)
                 <li><a href="{{ route('home.index') }}">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+                <li><a href="#">{{$cate->name}}</a></li>
+            @endforeach</ul> --}}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!—Nếu chưa đăng nhập -->
+                        @if (!Auth::guard('cus')->check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer.login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer.register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @else
+                            <!—Nếu đã đăng nhập -->
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
+                                        {{ Auth::guard('cus')->user()->name }} <span class="caret"></span>
+                                    </a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#!">{{ __('Logout') }}</a>
+                                </li>
+                                </li>
+                        @endif
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="container">
