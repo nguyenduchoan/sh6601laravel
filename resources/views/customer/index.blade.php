@@ -1,38 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('Css/slide.css') }}">
-    <link rel="stylesheet" href="{{ asset('Css/reset.css') }}">
-    <title>Document</title>
-</head>
-<body>
-    <div class="nav">
-        <ul>
-            <li><a href="!">Title</a></li>
-            <li><a href="!" class="active">Home</a></li>
-            <li><a href="!">Mo dau</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <div class="list_product">
-            @foreach ($data as $product)
-            {{-- {{dd($product->image)}} --}}
-            <div class="item">
-                <img src="{{ asset($product->image) }}" alt="" class="item_product_img">
-                <p class="title">{{ $product->title }}</p>
-                <p class="price">price: {{$product->price}}</p>
-                <div class="button">
-                    <button class="View__btn">View</button>
-                    <button class="Add__btn">Add Cart</button>
+@extends('master.home')
+@section('main')
+<style>
+    ul.navbar-nav.ml-auto {
+    position: absolute;
+    right: 200px;
+    top: 13px;
+}
+a.nav-link {
+    padding-left: 20px;
+}
+</style>
+    <div class="row products">
+        @foreach ($products as $pro)
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="{{$pro->image}}"
+                        alt="">
+                    <div class="caption">
+                        <h3>{{ $pro->name }}</h3>
+                        <p>
+                            <s>Giá gốc: {{ $pro->price }}</s>
+                            <b>Giá mới: {{ $pro->sale_price }}</b>
+                        </p>
+                        <p>
+                            <a href="{{ route('home.product_detail', $pro->id) }}" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-default">Add To Cart</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-        
+        @endforeach
     </div>
-</body>
-</html>
+@stop()

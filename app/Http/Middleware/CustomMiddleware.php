@@ -17,7 +17,6 @@ class CustomMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        dd("check o middleware");
         if (!Auth::guard('cus')->check()) {
             // chuyển hướng về form đăng nhập
             return redirect()->route('customer.login');
