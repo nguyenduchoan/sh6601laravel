@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 // Auth::routes();
 
-
+// Auth::guard('cus')->logout();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 // Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile')->middleware('auth');
@@ -31,28 +31,24 @@ Route::group(['prefix' => 'customer'], function () {
     // Phương thức get hiển thị form login
     Route::get('login', [CustomerController::class, 'login'])->name('customer.login');
     //Phương thức post để thực hiện login khi submit form
+    Route::post('login', [CustomerController::class, 'post_login']);
     // Route::post('login', [CustomerController::class, 'post_login']);
-    Route::post('login', function () {
-        return "check o day";
-    });
+
     // Phương thức get hiển thị form register
     Route::get('register', [CustomerController::class, 'register'])->name('customer.register');
     //Phương thức post để thực hiện register khi submit form
     Route::post('register', [CustomerController::class, 'post_register']);
 });
 
-
+Route::post('product-comment/{product}', [HomeController::class, 'productComment'])->name('home.product_comment');
 // Customer
 // HIển thị trang màn hình chính 
 Route::get('home/categories', [HomeController::class, 'index'])->name('home.index');
 
-Route::middleware(['cus'])->prefix('home')->group(function () {
-    // Truy cập các trang khác nếu đã đăng nhập
-    // Route::group(['middleware' => 'cus'], function () {
-    Route::get('categories/{product}', [HomeController::class, 'product'])->name('home.product_detail');
-    // });
-});
+Route::get('home/categories/{product}', [HomeController::class, 'product'])->name('home.product_detail');
+Route::get('home/categories/delete-comment/{comment}', [HomeController::class, 'deleteComment'])->name('home.deleteComment');
 
+Route::middleware(['cus'])->prefix('home')->group(function () {
 // Trang cho Admin 
 Route::middleware(['cus', 'admin'])->prefix('admin')->group(function () {
     // Hiển thị trang Admin
