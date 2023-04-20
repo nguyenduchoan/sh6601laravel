@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile')->middleware('auth');
+Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+
+//middleware cho route group
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', ['AdminController'::class, 'index'])->name('admin.index');
+    Route::resources([
+        'category' => 'CategoryController',
+        'product' => 'ProductController'
+    ]);
 });
