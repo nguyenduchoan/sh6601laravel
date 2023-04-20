@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Customer;
+
 return [
 
     /*
@@ -40,6 +42,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'cus' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
     ],
 
     /*
@@ -69,6 +76,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => Customer::class,
+        ],
     ],
 
     /*
