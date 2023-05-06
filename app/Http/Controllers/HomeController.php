@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //check login for Route home.index
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::orderBy('id', 'desc')->limit(4)->get();
+        return view('index', compact('products'));
+    }
+
+    public function product($id)
+    {
+        // Use the ID parameter to find the product in the database
+        $product = Product::findOrFail($id);
+
+        // Pass the product data to the view
+        return view('product-detail', compact('product'));
     }
 }

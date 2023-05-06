@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+//Route xem chi tiết sản phẩm
+Route::get('product/{id}', [HomeController::class, 'product'])->name('home.product_detail');
 //Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile')->middleware('auth');
 Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
 
