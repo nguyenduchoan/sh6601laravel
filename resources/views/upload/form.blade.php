@@ -12,7 +12,7 @@
     @csrf
     <div class="form-group">
         <label for="">Chọn ảnh</label>
-        <input type="file" class="form-control" name="upload" placeholder="Ten danh mục">
+        <input type="file" class="form-control" name="uploads[]" placeholder="Ten danh mục" multiple>
         @error('upload')
         <small class="help-block text-danger">{{$message}}</small>
         @enderror
